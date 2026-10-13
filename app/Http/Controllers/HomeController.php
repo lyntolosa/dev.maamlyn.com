@@ -12,6 +12,11 @@ class HomeController extends Controller
         return view('portfolio');
     }
 
+    public function contact()
+    {
+        return view('contact');
+    }
+
     public function generate(Request $request)
     {
         $validated = $request->validate([
@@ -45,7 +50,7 @@ class HomeController extends Controller
                 ->subject($subject);
         });
 
-        return redirect()->to('/#contact')
+        return redirect()->route('contact')
             ->with('contact_success', 'Thanks! Your inquiry has been sent. I’ll get back to you soon.')
             ->with('contact_prefill', [
                 'name' => $validated['name'],
